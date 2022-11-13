@@ -1,0 +1,106 @@
+# 풀이
+import sys
+import heapq as hq
+
+# solution 1
+# input = sys.stdin.readline
+# pq = []
+
+# for _ in range(int(input())):
+    # x = int(input())
+    # if x:
+    #     hq.heappush(pq, (abs(x), x))
+    # else:
+    #     print(hq.heappop(pq) if pq else 0)
+
+
+# solution 2
+import heapq as hq
+input = sys.stdin.readline
+min_heap = [] # 양수 보관
+max_heap = [] # 음수 보관
+
+for _ in range(int(input())):
+    x = int(input())
+    if x :
+        if x > 0:
+            hq.heappush(min_heap, x)
+        else:
+            hq.heappush(max_heap, -x)
+    else:
+        if min_heap:
+            if max_heap:
+                if min_heap[0] < abs(max_heap[0]):
+                    print(hq.heappop(min_heap))
+                elif min_heap[0] > abs(max_heap[0]):
+                    print(-hq.heappop(max_heap))
+                else:
+                    print(hq.heappop(min_heap))                    
+            else:
+                print(hq.heappop(min_heap))
+        else:
+            if max_heap:
+                print(-hq.heappop(max_heap))
+            else:
+                print(0)
+
+
+
+# 재도전....
+# import heapq
+
+
+# n = int(input())
+# pq = []
+
+# # https://stackoverflow.com/questions/3954530/how-to-make-heapq-evaluate-the-heap-off-of-a-specific-attribute
+# for i in range(n):
+#     x = int(input())
+    
+#     if x: # x != 0 -> 값 추가
+#         heapq.heappush(pq, (abs(x), x) )
+#     elif not pq: # x == 0 && pq empty
+#         print(0)
+#     else:
+#         min_abs = heapq.heappop(pq)
+#         print(min_abs[1])
+
+
+# 풀이 확인
+
+
+# import heapq
+
+
+# if __name__ == "__main__":
+#     iter_num = int(input())
+#     pq = []
+#     freqdict_neg = dict()
+
+#     for i in range(iter_num):
+#         n = int(input())
+        
+#         if n == 0 and not pq:
+#             print(0)
+#             continue
+
+#          # 최소값 반환 
+#         if n == 0 :
+#             abs_val = 1
+#             if pq[0] in freqdict_neg:
+#                 abs_val = -1
+#                 freqdict_neg[pq[0]] -= 1
+#                 if freqdict_neg[pq[0]] == 0:
+#                     freqdict_neg.pop(pq[0])
+
+#             print(abs_val * heapq.heappop(pq))
+#             continue
+        
+#         # 값 추가
+#         if n < 0:
+#             n = -n
+#             if n not in freqdict_neg:
+#                 freqdict_neg[n] = 0
+#             freqdict_neg[n] += 1
+            
+#         heapq.heappush(pq, n)
