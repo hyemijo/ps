@@ -1,5 +1,5 @@
-* ds_basic
-exercise to get basic problem solving skills
+# ds_basic
+exercise to boost problem solving skills using various data structures & algorithms
 
 
 | category          | fname                                                        |
